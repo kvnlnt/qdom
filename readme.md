@@ -74,7 +74,8 @@ Generates this css:
 And then using it in a component like this:
 
 ```
-el('h1', {class:`${cls.color_black} ${cls.color_red_on_hover}`})('Hello world')
+const h1Style = [cls.color_black, cls.color_red_on_hover].join(' ')
+el('h1', {class:h1Style})('Hello world')
 ```
 
 Generates html that turns red on hover:

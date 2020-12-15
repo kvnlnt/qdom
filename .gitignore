@@ -1,0 +1,5 @@
+rd
+x-*
+node_modules
+.cache
+dist

@@ -9,7 +9,7 @@ No framework as framework
 
 ## Features
 
-QDOM is a starter kit for creating your own dependency free web app. Thanks to Typescript and a handful of well designed patterns it provides a surprisingly feature rich set of capabilities without the use of libraries.
+QDOM is a starter kit for creating your own scalable dependency free web app. Thanks to Typescript and a handful of well designed patterns it provides a surprisingly feature rich set of capabilities without the use of libraries.
 
 Includes:
 

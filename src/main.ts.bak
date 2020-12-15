@@ -1,18 +1,10 @@
-import { el, style } from './dom';
+import { el } from './lib/dom';
+import styles from './lib/styles';
 import {
   StateImplementation,
   ComponentImplementation,
   TodoItem,
-} from './types';
-
-const atoms = {
-  fs_m: ['fontSize', '16px'],
-  fs_l: ['fontSize', '18px'],
-  fs_xl: ['fontSize', '24px'],
-  text_strike: ['textDecoration', 'line-through'],
-  cursor_pointer: ['cursor', 'pointer'],
-};
-const cls = style<typeof atoms>(atoms);
+} from './lib/types';
 
 class TodoState implements StateImplementation<TodoItem[]> {
   data: TodoItem[];
@@ -41,7 +33,7 @@ class TodoList implements ComponentImplementation {
     this.todoItemsCompleted = todoItemsCompleted;
     this.todoItems.sub(this.render.bind(this));
     this.todoItemsCompleted.sub(this.render.bind(this));
-    this.wrapper = el('div', ['class', cls.fs_xl])();
+    this.wrapper = el('div', ['class', styles.fs_l])();
     this.handleClick = this.handleClick.bind(this);
   }
   handleClick(e: Event) {
@@ -62,7 +54,7 @@ class TodoList implements ComponentImplementation {
         ...this.todoItems.get().map((todo) => {
           const classes = [
             'cursor_pointer',
-            completed.includes(todo) && cls.text_strike,
+            completed.includes(todo) && styles.text_strike,
           ];
           return el(
             'li',

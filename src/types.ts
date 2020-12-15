@@ -16,7 +16,7 @@ export type Attrs<X extends keyof Partial<HTMLElementTagNameMap>> = [
 
 export type Atom = [keyof CSSStyleDeclaration, string];
 
-export interface StateInterface<T> {
+export interface StateImplementation<T> {
   data: T;
   subs: Function[];
   sub: (func: Function) => void;
@@ -24,7 +24,7 @@ export interface StateInterface<T> {
   set: (data: T) => void;
 }
 
-export interface ComponentInterface {
+export interface ComponentImplementation {
   wrapper: HTMLElement;
   render: () => HTMLElement;
 }

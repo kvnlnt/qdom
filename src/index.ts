@@ -1,5 +1,9 @@
 import { el, style } from './dom';
-import { StateInterface, ComponentInterface, TodoItem } from './types';
+import {
+  StateImplementation,
+  ComponentImplementation,
+  TodoItem,
+} from './types';
 
 const atoms = {
   fs_m: ['fontSize', '16px'],
@@ -10,7 +14,7 @@ const atoms = {
 };
 const cls = style<typeof atoms>(atoms);
 
-class TodoState implements StateInterface<TodoItem[]> {
+class TodoState implements StateImplementation<TodoItem[]> {
   data: TodoItem[];
   subs: Function[] = [];
   constructor(items: TodoItem[]) {
@@ -28,7 +32,7 @@ class TodoState implements StateInterface<TodoItem[]> {
   }
 }
 
-class TodoList implements ComponentInterface {
+class TodoList implements ComponentImplementation {
   private todoItems: TodoState;
   private todoItemsCompleted: TodoState;
   wrapper: HTMLElement;
@@ -72,7 +76,7 @@ class TodoList implements ComponentInterface {
   }
 }
 
-class TodoForm implements ComponentInterface {
+class TodoForm implements ComponentImplementation {
   private todosState: TodoState;
   private input: HTMLInputElement = el('input', ['type', 'text'])();
   wrapper: HTMLElement;

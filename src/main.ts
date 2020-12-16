@@ -1,32 +1,24 @@
-import { el } from './lib/dom';
-import { StateImplementation, ComponentImplementation } from './lib/types';
+import DesignSystem from './components/design-system/index';
+import FourOhFour from './components/404/index';
+import UI from './components/UI/index';
+import Todos from './components/Todos/index';
 
-function route(): HTMLElement {
-  const hash = window.location.hash;
-  const p1 = /^#\/page-1$/;
-  const p2 = /^#\/page-2$/;
-  const p3 = /^#\/page-3$/;
-  const p4 = /^#\/page\/([\d])$/;
-  if (p1.test(hash)) return el('div')('page-1');
-  if (p2.test(hash)) return el('div')('page-2');
-  if (p3.test(hash)) return el('div')('page-3');
-  if (p4.test(hash)) return el('div')('page-' + hash.match(p4)[1]);
+function route(path: string): HTMLElement {
+  const designSystem = /^#\/design-system$/;
+  const todos = /^#\/todos$/;
+  if (designSystem.test(path)) return new DesignSystem().render();
+  if (todos.test(path)) return new Todos().render();
+  return new FourOhFour().render();
 }
 
-const Menu = el('div')(
-  el('a', ['href', '#/page-1'])('page-1'),
-  el('a', ['href', '#/page-2'])('page-2'),
-  el('a', ['href', '#/page-3'])('page-3'),
-  el('a', ['href', '#/page/4'])('page-4')
-);
+const router = (container: HTMLElement) => {
+  const page = new UI(route(window.location.hash));
+  container.innerHTML = '';
+  container.appendChild(page.render());
+};
 
 window.addEventListener('DOMContentLoaded', () => {
   const root: HTMLElement = document.getElementById('root');
-  root.appendChild(Menu);
-  root.appendChild(route());
-  window.onhashchange = () => {
-    root.innerHTML = '';
-    root.appendChild(Menu);
-    root.appendChild(route());
-  };
+  router(root);
+  window.onhashchange = () => router(root);
 });

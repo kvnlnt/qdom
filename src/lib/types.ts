@@ -14,8 +14,6 @@ export type Attrs<X extends keyof Partial<HTMLElementTagNameMap>> = [
   string | number | Function
 ];
 
-export type Atom = [keyof CSSStyleDeclaration, string];
-
 export interface StateImplementation<T> {
   data: T;
   subs: Function[];

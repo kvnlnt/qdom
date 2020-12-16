@@ -41,11 +41,13 @@ const CreateStyleSheet = (css: string): void => {
   document.getElementsByTagName('head')[0].appendChild(style);
 };
 
-export function style<T>(
+export const style = <T>(
   rules: {
-    [K in keyof T]: string[];
+    [K in keyof T]: [keyof CSSStyleDeclaration, string];
   }
-): { [K in keyof T]: string } {
+): {
+  [K in keyof T]: keyof CSSStyleDeclaration;
+} => {
   const css: any = {};
   const styles: string[] = [];
   Object.entries(rules).forEach(([k, v]: [string, Atom]) => {
@@ -57,4 +59,4 @@ export function style<T>(
   });
   CreateStyleSheet(styles.join(''));
   return css;
-}
+};

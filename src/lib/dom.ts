@@ -43,10 +43,10 @@ const CreateStyleSheet = (css: string): void => {
 
 export const style = <T>(
   rules: {
-    [K in keyof T]: [keyof CSSStyleDeclaration, string];
+    [key in keyof T]: [keyof CSSStyleDeclaration, string];
   }
 ): {
-  [K in keyof T]: keyof CSSStyleDeclaration;
+  [key in keyof T]: string;
 } => {
   const css: any = {};
   const styles: string[] = [];

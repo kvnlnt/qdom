@@ -1,7 +1,13 @@
 import { style } from './dom';
 
 export default style({
+  bg_color_black: ['backgroundColor', 'black'],
+  bg_color_grey: ['backgroundColor', 'grey'],
+  bg_color_white: ['backgroundColor', 'white'],
+  color_black: ['color', 'black'],
+  color_white: ['color', 'white'],
   cursor_pointer: ['cursor', 'pointer'],
+  display_none: ['display', 'none'],
   fs_l: ['fontSize', '18px'],
   fs_m: ['fontSize', '16px'],
   fs_xl: ['fontSize', '24px'],
@@ -13,8 +19,8 @@ export default style({
   grid_gap_m: ['gridGap', '10px'],
   grid_gap_l: ['gridGap', '20px'],
   height_100: ['height', '100%'],
-  margin_0: ['margin', 0],
-  padding_0: ['padding', 0],
+  margin_0: ['margin', '0px'],
+  padding_0: ['padding', '0px'],
   padding_m: ['padding', '5px'],
   padding_l: ['padding', '10px'],
   padding_xl: ['padding', '15px'],

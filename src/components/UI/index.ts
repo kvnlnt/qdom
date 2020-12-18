@@ -1,6 +1,7 @@
 import { el } from '~lib/dom';
 import { ComponentImplementation } from '../../lib/types';
 import styles from '../../lib/styles';
+import l10n from '~lib/l10n';
 
 export default class DesignSystem implements ComponentImplementation {
   wrapper: HTMLElement = el('div', [
@@ -17,9 +18,12 @@ export default class DesignSystem implements ComponentImplementation {
     this.page = page;
   }
   renderMenu() {
+    const link = (text: string, href: string) =>
+      el('a', ['href', href], ['class', styles.color_white])(text);
     return el('div', [
       'class',
       [
+        styles.bg_color_grey,
         styles.padding_l,
         styles.grid,
         styles.grid_template_columns_max_content,
@@ -27,8 +31,8 @@ export default class DesignSystem implements ComponentImplementation {
         styles.grid_gap_l,
       ].join(' '),
     ])(
-      el('a', ['href', '#/design-system'])('Design System'),
-      el('a', ['href', '#/todos'])('Todos')
+      link(l10n.todosPageTitle, '#/todos'),
+      link(l10n.designSystemPageTitle, '#/design-system')
     );
   }
   render() {

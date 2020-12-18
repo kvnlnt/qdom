@@ -25,6 +25,9 @@ export interface ComponentImplementation {
   render: (args?: {}) => HTMLElement;
 }
 
+type psuedoSelectors = ':hover' | ':active' | ':visited' | ':focus';
+export type Atom = [keyof CSSStyleDeclaration, string, psuedoSelectors?];
+
 // ELEMENTS
 
 export interface AccordionImplementation {
@@ -34,8 +37,21 @@ export interface AccordionImplementation {
   onToggle?: Function;
 }
 
+export interface TodoImplementation {
+  id: number;
+  title: string;
+  parent?: string;
+  datetime?: Date;
+  completed: boolean;
+  completedDate: Date;
+}
+
 // COMPONENTS
 
 export interface DesignSystemStateOptions {
   accordionItems: AccordionImplementation[];
+}
+
+export interface TodoOptions {
+  todos: TodoImplementation[];
 }

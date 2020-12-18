@@ -1,24 +1,28 @@
-import DesignSystemView from './components/design-system/view';
-import DesignSystemState from './components/design-system/state';
 import DesignSystemData from './components/design-system/data';
+import DesignSystemState from './components/design-system/State';
+import DesignSystemView from './components/design-system/View';
 import FourOhFour from './components/404/index';
-import UI from './components/UI/index';
-import Todos from './components/Todos/index';
+import TodosListView from './components/todos/ListView';
+import TodosNewView from './components/todos/NewView';
 
 function route(path: string): HTMLElement {
   const designSystemRoute = /^#\/design-system$/;
   const designSystemState = new DesignSystemState(DesignSystemData);
   const designSystemView = new DesignSystemView(designSystemState);
-  const todosRoute = /^#\/todos$/;
+  const todosListRoute = /^#\/todos$/;
+  const todosListView = new TodosListView();
+  const todosNewRoute = /^#\/todos\/new$/;
+  const todosNewView = new TodosNewView();
   if (designSystemRoute.test(path)) return designSystemView.render();
-  if (todosRoute.test(path)) return new Todos().render();
+  if (todosListRoute.test(path)) return todosListView.render();
+  if (todosNewRoute.test(path)) return todosNewView.render();
   return new FourOhFour().render();
 }
 
 const router = (container: HTMLElement) => {
-  const page = new UI(route(window.location.hash));
+  const page = route(window.location.hash);
   container.innerHTML = '';
-  container.appendChild(page.render());
+  container.appendChild(page);
 };
 
 window.addEventListener('DOMContentLoaded', () => {

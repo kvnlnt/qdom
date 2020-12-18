@@ -43,7 +43,7 @@ const CreateStyleSheet = (css: string): void => {
 
 export const style = <T>(
   rules: {
-    [key in keyof T]: [keyof CSSStyleDeclaration, string];
+    [key in keyof T]: Atom;
   }
 ): {
   [key in keyof T]: string;
@@ -51,7 +51,8 @@ export const style = <T>(
   const css: any = {};
   const styles: string[] = [];
   Object.entries(rules).forEach(([k, v]: [string, Atom]) => {
-    const declaration = `.${k}{${(<string>v[0])
+    const suffix = v[2] ? `${v[2]}` : '';
+    const declaration = `.${k}${suffix}{${(<string>v[0])
       .replace(/([A-Z])/g, '-$1')
       .toLowerCase()}:${v[1]}}`;
     css[k] = k;

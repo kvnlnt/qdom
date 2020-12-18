@@ -2,12 +2,18 @@ import { style } from './dom';
 
 export default style({
   bg_color_black: ['backgroundColor', 'black'],
+  bg_color_black_on_hover: ['backgroundColor', 'black', ':hover'],
   bg_color_grey: ['backgroundColor', 'grey'],
+  bg_color_grey_on_hover: ['backgroundColor', 'grey', ':hover'],
   bg_color_white: ['backgroundColor', 'white'],
+  bg_color_white_on_hover: ['backgroundColor', 'white', ':hover'],
+  block: ['display', 'block'],
   color_black: ['color', 'black'],
+  color_black_on_hover: ['color', 'black', ':hover'],
   color_white: ['color', 'white'],
+  color_white_on_hover: ['color', 'white', ':hover'],
   cursor_pointer: ['cursor', 'pointer'],
-  display_none: ['display', 'none'],
+  hide: ['display', 'none'],
   fs_l: ['fontSize', '18px'],
   fs_m: ['fontSize', '16px'],
   fs_xl: ['fontSize', '24px'],
@@ -25,4 +31,5 @@ export default style({
   padding_l: ['padding', '10px'],
   padding_xl: ['padding', '15px'],
   text_strike: ['textDecoration', 'line-through'],
+  text_align_right: ['textAlign', 'right'],
 });

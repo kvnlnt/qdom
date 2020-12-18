@@ -2,8 +2,8 @@ import { el } from '../../lib/dom';
 import Accordion from '../../elements/Accordion';
 import l10n from '../../lib/l10n';
 import { ComponentImplementation } from '~lib/types';
-import DesignSystemState from './state';
-import styles from '~lib/styles';
+import DesignSystemState from './State';
+import UI from '../UI/Main';
 
 export default class DesignSystem implements ComponentImplementation {
   private designSystemState: DesignSystemState;
@@ -43,31 +43,36 @@ export default class DesignSystem implements ComponentImplementation {
     const subSectionTitle = el('h3');
     const subSectionExample = el('div');
 
-    this.wrapper.appendChild(
-      el('div', ['class', [styles.padding_xl].join(' ')])(
-        pageTitle(l10n.designSystemPageTitle),
-        ...[
+    const examples = [
+      {
+        title: 'Forms',
+        sections: [
           {
-            title: 'Forms',
-            sections: [
-              {
-                title: 'Accordion',
-                example: this.renderAccordionsExample(),
-              },
-            ],
+            title: 'Accordion',
+            example: this.renderAccordionsExample(),
           },
-        ].map(({ title, sections }: { title: string; sections: [] }) =>
-          sectionWrapper(
-            sectionTitle(title),
-            ...sections.map(({ title, example }) =>
-              subSectionWrapper(
-                subSectionTitle(title),
-                subSectionExample(example)
+        ],
+      },
+    ];
+
+    this.wrapper.appendChild(
+      new UI(
+        el('div')(
+          pageTitle(l10n.designSystemPageTitle),
+          ...examples.map(
+            ({ title, sections }: { title: string; sections: [] }) =>
+              sectionWrapper(
+                sectionTitle(title),
+                ...sections.map(({ title, example }) =>
+                  subSectionWrapper(
+                    subSectionTitle(title),
+                    subSectionExample(example)
+                  )
+                )
               )
-            )
           )
         )
-      )
+      ).render()
     );
     return this.wrapper;
   }

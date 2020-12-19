@@ -11,10 +11,11 @@ import styles from '~lib/styles';
 import Breadcrumb from '../../elements/Breadcrumb';
 import Button from '../../elements/Button';
 import Select from '../../elements/Select';
+import TodosState from './TodosState';
 
-export default class DesignSystem implements ComponentImplementation {
+export default class TodosNewView implements ComponentImplementation {
   wrapper: HTMLElement = el('div')();
-  constructor() {}
+  constructor(todosState: TodosState) {}
   render() {
     this.wrapper.innerHTML = '';
     const header = el('h1');

@@ -4,8 +4,12 @@ import {
   TodoImplementation,
 } from '../../lib/types';
 
-export default class Todo implements StateImplementation {
+export default class TodosState implements StateImplementation {
   private _todos: TodoImplementation[] = [];
+  static localStorage() {
+    const localStorageTodos = window.localStorage.getItem('todos');
+    return localStorageTodos ? JSON.parse(localStorageTodos) : [];
+  }
   subs: Function[] = [];
   constructor({ todos }: TodoOptions) {
     this._todos = todos;

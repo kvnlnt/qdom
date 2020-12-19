@@ -4,10 +4,11 @@ import styles from '~lib/styles';
 import { ComponentImplementation } from '../../lib/types';
 import UI from '../UI/Main';
 import LinkButton from '../../elements/LinkButton';
+import TodosState from './TodosState';
 
-export default class DesignSystem implements ComponentImplementation {
+export default class TodosListView implements ComponentImplementation {
   wrapper: HTMLElement = el('div')();
-  constructor() {}
+  constructor(todosState: TodosState) {}
   render() {
     this.wrapper.innerHTML = '';
     const header = el('h1');

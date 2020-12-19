@@ -2,6 +2,9 @@ const terms = {
   forms: 'Forms',
   designSystem: 'Design System',
   todos: 'Todos',
+  add: 'Add',
+  datetime: 'Date Time',
+  parent: 'Parent',
 };
 
 const phrases = {
@@ -14,4 +17,8 @@ export default {
   newTodoPageTitle: phrases.newTodo,
   designSystemPageTitle: terms.designSystem,
   fourOhFourPageTitle: phrases.pageNotFound,
+  buttonAdd: terms.add,
+  inputNewTodo: phrases.newTodo,
+  inputDateTime: terms.datetime,
+  inputParent: terms.parent,
 };
